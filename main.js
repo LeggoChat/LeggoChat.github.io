@@ -7,7 +7,7 @@ if (linkChn !== '') {
 document.getElementById('title').innerHTML = "#" + currentChn;
 // log("Joined " + currentChn);
 
-var socket = io.connect('https://94.237.69.85:12345');
+var socket = io.connect('https://leggochat.hexabyn.com');
 socket.on('status', function (data) {
     log(data);
     socket.emit('client', { channel: currentChn });
