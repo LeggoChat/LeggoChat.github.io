@@ -29,8 +29,8 @@ function send() {
 }
 
 function join() {
-    window.location.href = window.location.hostname + "#" + document.getElementById('chgchannel').value;
-    location.reload(true);
+    window.location.href = "/#" + document.getElementById('chgchannel').value;
+    //location.reload(true);
 }
 
 function log(msg) {
