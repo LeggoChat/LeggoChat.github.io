@@ -29,7 +29,7 @@ function send() {
 }
 
 function join() {
-    window.location.href = "/#" + document.getElementById('chgchannel').value;
+    window.location.href = "chat.html/#" + document.getElementById('chgchannel').value;
     //location.reload(true);
 }
 
