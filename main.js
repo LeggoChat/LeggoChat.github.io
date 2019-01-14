@@ -4,7 +4,11 @@ if (linkChn !== '') {
     currentChn = linkChn;
 }
 // document.getElementById('channel').value = currentChn;
-document.getElementById('title').innerHTML = "#" + currentChn;
+var currentChnText = currentChn;
+if(currentChn.length > 15){
+    currentChnText = currentChn.substring(0,12)+"..."
+}
+document.getElementById('title').innerHTML = "#" + currentChnText;
 currentChn = '#'+currentChn;
 $('#connecting').modal('show');
 // log("Joined " + currentChn);
