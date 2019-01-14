@@ -32,7 +32,10 @@ function send() {
 
 function join() {
     window.location.href = "/chat#" + document.getElementById('chgchannel').value;
-    //location.reload(true);
+    setTimeout(function(){
+        $('#chgingChn').modal('show');
+        location.reload();
+    },1000)
 }
 
 function log(msg) {
