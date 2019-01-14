@@ -26,6 +26,10 @@ socket.on('disconnect', function (data) {
 });
 
 function send() {
+    if(document.getElementById('message').value.replace(/\s/g, "") == ''){
+        document.getElementById('message').value = "";
+        return false;
+    }
     socket.emit('trigger', { channel: currentChn, message: document.getElementById('message').value });
     // log("Me: " + document.getElementById('message').value);
     log({from: "Me", message: document.getElementById('message').value});
@@ -42,7 +46,9 @@ function join() {
 }
 
 function log(msg) {
-    console.log(msg);
+    if(typeof(msg) == "undefined" || msg == null || typeof(msg.message) == "undefined"){
+        return false;
+    }
     // document.getElementById('log').innerHTML += "</br>" + JSON.stringify(msg);
 
     if(msg.from == "notice"){

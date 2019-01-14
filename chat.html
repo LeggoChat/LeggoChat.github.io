@@ -17,6 +17,24 @@
             margin-top: 5px;
             margin-bottom: 5px;
         }
+
+        .footer{
+            padding: 0;
+        }
+
+        @media only screen and (min-width: 1280px) {
+            .card{
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+        }
+
+        @media only screen and (min-width: 1600px) {
+            .card{
+                margin-top: 15px;
+                margin-bottom: 15px;
+            }
+        }
     </style>
 </head>
 
@@ -76,7 +94,7 @@
     </div>
     <footer class="footer footer-default">
         <div class="container">
-            <nav class="float-left">
+            <nav class="float-left d-none d-md-block">
                 <ul>
                     <li>
                         <a target="_blank" href="https://hexabyn.com/">
@@ -91,6 +109,7 @@
                     document.write(new Date().getFullYear())
                 </script>
                 <a href="https://leggochat.github.io/" target="blank">LeggoChat</a>, chat freely.
+                <span class="d-block d-md-none">Server Sponsored by <a target="_blank" href="https://hexabyn.com/"></a>Hexabyn Technologies</a></span>
             </div>
         </div>
     </footer>
