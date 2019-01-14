@@ -5,11 +5,13 @@ if (linkChn !== '') {
 }
 // document.getElementById('channel').value = currentChn;
 document.getElementById('title').innerHTML = "#" + currentChn;
+$('#connecting').modal('show');
 // log("Joined " + currentChn);
 
 var socket = io.connect('https://leggochat.hexabyn.com');
 socket.on('status', function (data) {
     log(data);
+    $('#connecting').modal('hide');
     socket.emit('client', { channel: currentChn });
 });
 
@@ -29,7 +31,7 @@ function send() {
 }
 
 function join() {
-    window.location.href = "chat#" + document.getElementById('chgchannel').value;
+    window.location.href = "/chat#" + document.getElementById('chgchannel').value;
     //location.reload(true);
 }
 
