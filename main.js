@@ -5,6 +5,7 @@ if (linkChn !== '') {
 }
 // document.getElementById('channel').value = currentChn;
 document.getElementById('title').innerHTML = "#" + currentChn;
+currentChn = '#'+currentChn;
 $('#connecting').modal('show');
 // log("Joined " + currentChn);
 
@@ -16,6 +17,7 @@ socket.on('status', function (data) {
 });
 
 socket.on(currentChn, function (data) {
+    console.log(data);
     log(data);
 });
 
@@ -49,6 +51,8 @@ function log(msg) {
                 <p class="mb-0">${msg.message}</p>
             </blockquote>
         `;
+    }else if(msg.from == "count"){
+        document.getElementById('count').innerHTML = msg.message;
     }else{
         if(msg.from == "Me"){
             var html = `
@@ -94,13 +98,13 @@ function log(msg) {
         
     }
 
-    document.getElementById('log').innerHTML += html;
+    if(typeof(html) !== "undefined"){
+        document.getElementById('log').innerHTML += html;
+        var objDiv = document.getElementsByTagName("BODY")[0];
+        objDiv.scrollTop = objDiv.scrollHeight;
 
-    var objDiv = document.getElementsByTagName("BODY")[0];
-    objDiv.scrollTop = objDiv.scrollHeight;
-
-    window.scrollTo(0,document.body.scrollHeight);
-
+        window.scrollTo(0,document.body.scrollHeight);
+    }
 }
 
 var input = document.getElementById("message");
