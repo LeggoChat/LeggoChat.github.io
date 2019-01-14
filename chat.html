@@ -83,7 +83,22 @@
                 <div id="log" class="text-left"></div>
                 <div class="row">
                     <div class="col-12 col-md-10">
-                        <input class="form-control" type="text" id="message" />
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                                
+                                <div class="form-check">
+                                    <label class="form-check-label">Persist &nbsp;
+                                        <input id="persist" class="form-check-input" type="checkbox" value="">
+                                        
+                                        <span class="form-check-sign">
+                                            <span class="check"></span>
+                                        </span>
+                                    </label>
+                                </div>
+                                
+                            </div>
+                            <input class="form-control" type="textarea" id="message" />
+                        </div>
                     </div>
                     <div class="col-12 col-md-2">
                         <button class="btn btn-dark btn-block" id="sendBtn" onclick="send();">Send</button>
