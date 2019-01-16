@@ -1,3 +1,4 @@
+Notification.requestPermission();
 var currentChn = 'general';
 var currentPage = 0;
 var linkChn = window.location.hash.substr(1);
@@ -199,6 +200,7 @@ function log(msg) {
             if(msg.persist == 1 || msg.persist == true || msg.persist == "true"){
                 persistStr = " - Persisted";
             }
+            notify(msg.message);
             var html = `
                 <div class="container"><div class="row">
                     <div class="card bg-info col-12 col-sm-6">
@@ -230,6 +232,32 @@ function log(msg) {
         window.scrollTo(0,document.body.scrollHeight);
     }
 }
+
+function notify(message) {
+    // Let's check if the browser supports notifications
+    if (!("Notification" in window)) {
+      alert("This browser does not support system notifications");
+    }
+  
+    // Let's check whether notification permissions have already been granted
+    else if (Notification.permission === "granted") {
+      // If it's okay let's create a notification
+      var notification = new Notification(message);
+    }
+  
+    // Otherwise, we need to ask the user for permission
+    else if (Notification.permission !== 'denied') {
+      Notification.requestPermission(function (permission) {
+        // If the user accepts, let's create a notification
+        if (permission === "granted") {
+          var notification = new Notification(message);
+        }
+      });
+    }
+  
+    // Finally, if the user has denied notifications and you 
+    // want to be respectful there is no need to bother them any more.
+  }
 
 var input = document.getElementById("message");
 
