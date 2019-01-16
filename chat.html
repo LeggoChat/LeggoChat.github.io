@@ -63,7 +63,8 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <button type="button" data-toggle="modal" data-target="#claim-modal" class="d-inline nav-link btn btn-link" ><i class="material-icons">lock</i> Claim Channel</button>
+                        <button id="claim-chn-btn" type="button" data-toggle="modal" data-target="#claim-modal" class="d-inline nav-link btn btn-link" ><i class="material-icons">lock</i> Claim Channel</button>
+                        <button id="change-pwd-btn" type="button" data-toggle="modal" data-target="#change-pwd-modal" class="d-none nav-link btn btn-link" ><i class="material-icons">lock</i> Change Password</button>
                         <button type="button" class="d-inline btn btn-link nav-link" data-toggle="modal" data-target="#exampleModal"><i class="material-icons">swap_calls</i> Change Channel</button>
                     </li>
                 </ul>
@@ -189,8 +190,30 @@
         </div>
     </div>
 
+    <!-- Change Password Modal -->
+    <div class="modal fade" id="change-pwd-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Change Channel Password</h5>
+                    
+                </div>
+                <div class="modal-body">
+                        <input class="form-control" type="password" id="change-old-password" placeholder="old password"/>
+                        <input class="form-control" type="password" id="change-new-password" placeholder="new password"/>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    &nbsp;
+                    <button type="button" onclick="changePassword();" class="btn btn-danger">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Prompt Auth Modal -->
-    <div class="modal fade" id="auth-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" data-backdrop="static" data-keyboard="false" id="auth-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -199,6 +222,7 @@
                     
                 </div>
                 <div class="modal-body">
+                        <p id="auth-fail-error" style="display: none; color: red;">Access Denied. Password is incorrect!</p>
                         <input class="form-control" type="password" id="authpassword" placeholder="password"/>
                 </div>
                 <div class="modal-footer">

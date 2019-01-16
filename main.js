@@ -46,6 +46,7 @@ socket.on('messages', function (data) {
 });
 
 socket.on("server", function (data) {
+    console.log(data);
     if(data.for == "claim"){
         if(data.message == 1)
             log({from: "notice", message: "Room successfully claimed."});
@@ -54,7 +55,19 @@ socket.on("server", function (data) {
     }else if(data.for == "allow_messages"){
         socket.emit('messages', { channel: currentChn, page: currentPage });
     }else if(data.for == "auth"){
+        $('#change-pwd-btn').removeClass('d-none');
+        $('#change-pwd-btn').addClass('d-inline');
+        $('#claim-chn-btn').removeClass('d-inline');
+        $('#claim-chn-btn').addClass('d-none');
         $('#auth-modal').modal('show');
+    }else if(data.for == "changed_password"){
+        window.location.reload();
+    }else if(data.for == "auth_success"){
+        $('#auth-modal').modal('hide');
+    }
+    else if(data.for == "auth_failure"){
+        document.getElementById('authpassword').value = "";
+        $('#auth-fail-error').show();
     }
 });
 
@@ -72,7 +85,13 @@ function send() {
 function authenticate(){
     socket.emit('client', { channel: currentChn, password: document.getElementById('authpassword').value });
     document.getElementById('authpassword').value = "";
-    $('#auth-modal').modal('hide');
+}
+
+function changePassword(){
+    socket.emit('server', { mode: "change_password", channel: currentChn, oldpassword: document.getElementById('change-old-password').value, newpassword: document.getElementById('change-new-password').value });
+    document.getElementById('change-new-password').value = "";
+    document.getElementById('change-old-password').value = "";
+    $('#change-pwd-modal').modal('hide');
 }
 
 function claim(){
