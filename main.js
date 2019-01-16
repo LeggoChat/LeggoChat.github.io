@@ -246,3 +246,7 @@ input.addEventListener("keyup", function (event) {
 $('.nav-link').on('click',function() {
     $('#toggle-nav').click();
 });
+
+$( document ).ready(function() {
+    $('#log').css("margin-bottom",$('.send').height()+"px");
+});

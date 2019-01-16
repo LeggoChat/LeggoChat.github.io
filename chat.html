@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!-- Material Kit CSS -->
     <link href="assets/css/material-kit.css?v=2.0.5" rel="stylesheet" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
     <style>
         .card{
             margin-top: 5px;
@@ -44,15 +46,53 @@
         .navbar-collapse .navbar-nav .nav-item .nav-link{
             color: white;
         }
+
+        .logo{
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            max-height: 45px;
+        }
+
+        .info{
+            position: absolute;
+            top: 25%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .send{
+            position: fixed;
+            bottom: 0;
+            background-color: #212121;
+            color: white;
+            padding-top: 10px;
+            left: 0;
+            right: 0;
+        }
+
+        .send-msg-bg{
+            background: white;
+            border-radius: 25px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        .form-check-label{
+            top: 50%;
+            transform: translateY(-50%);
+            color: black;
+        }
     </style>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg bg-dark sticky-top" style="border-radius: 0;">
-        <div class="container">
+        <div class="container text-center">
             <!-- <a class="navbar-brand" href="#">LeggoChat</a> -->
-            <span class="navbar-brand">LeggoChat: <span id="title"></span></span>
-            <span><span class="d-md-none">(</span><span id="count">0</span><span class="d-md-none">)</span>&nbsp;<span class="d-none d-md-inline">Participants</span></span>
+            <span class="navbar-brand"><img class="logo mr-auto" src="assets/img/logo-white.png" /></span>
+            <div class="info"><span id="title"></span>&nbsp;<span class="d-md-none">(</span><span id="count">0</span><span class="d-md-none">)</span>&nbsp;<span class="d-none d-md-inline">Participants</span></div>
             <button id="toggle-nav" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
                 aria-expanded="false" aria-label="Toggle navigation">
                 <span class="sr-only">Toggle navigation</span>
@@ -73,7 +113,6 @@
     </nav>
 
 
-    <div class="">
         <div class="container">
             <div class="section text-center">
                 
@@ -81,33 +120,49 @@
                 <!-- <button onclick="join();">Join</button> -->
                 <br>
                 <div id="log" class="text-left"></div>
-                <div class="row">
-                    <div class="col-12 col-md-10">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                                
-                                <div class="form-check">
-                                    <label class="form-check-label">Persist &nbsp;
-                                        <input id="persist" class="form-check-input" type="checkbox" value="">
-                                        
-                                        <span class="form-check-sign">
-                                            <span class="check"></span>
-                                        </span>
-                                    </label>
+                
+                <div class="send">
+                    <div class="container">
+                        <div class="row text-center">
+                            <div class="col-12 col-md-10">
+                                <div class="container send-msg-bg">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="form-check">
+                                                <label class="form-check-label">Persist &nbsp;
+                                                    <input id="persist" class="form-check-input" type="checkbox" value="">
+                                                    
+                                                    <span class="form-check-sign">
+                                                        <span class="check"></span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <input class="form-control" type="textarea" id="message" />
+                                    </div>
                                 </div>
-                                
                             </div>
-                            <input class="form-control" type="textarea" id="message" />
+                            <div class="col-12 col-md-2">
+                                <button class="btn btn-danger btn-block" id="sendBtn" onclick="send();">Send</button>
+                            </div>
+
+                            <div class="container">
+                                <div class="copyright text-center">
+                                    &copy;
+                                    <script>
+                                        document.write(new Date().getFullYear())
+                                    </script>
+                                    <a href="https://leggochat.github.io/" target="blank">LeggoChat</a>, chat freely.
+                                    <span class="d-block">Server Sponsored by <a target="_blank" href="https://hexabyn.com/">Hexabyn Technologies</a></span>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-12 col-md-2">
-                        <button class="btn btn-dark btn-block" id="sendBtn" onclick="send();">Send</button>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <footer class="footer footer-default">
+
+    <!-- <footer class="footer footer-default">
         <div class="container">
             <nav class="float-left d-none d-md-block">
                 <ul>
@@ -127,7 +182,7 @@
                 <span class="d-block d-md-none">Server Sponsored by <a target="_blank" href="https://hexabyn.com/"></a>Hexabyn Technologies</a></span>
             </div>
         </div>
-    </footer>
+    </footer> -->
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
