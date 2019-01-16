@@ -47,7 +47,6 @@ socket.on('messages', function (data) {
 });
 
 socket.on("server", function (data) {
-    console.log(data);
     if(data.for == "claim"){
         if(data.message == 1)
             log({from: "notice", message: "Room successfully claimed."});
