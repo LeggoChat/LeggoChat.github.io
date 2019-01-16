@@ -199,7 +199,6 @@ function log(msg) {
             if(msg.persist == 1 || msg.persist == true || msg.persist == "true"){
                 persistStr = " - Persisted";
             }
-            notify(msg.message);
             var html = `
                 <div class="container"><div class="row">
                     <div class="card bg-info col-12 col-sm-6">
@@ -230,6 +229,8 @@ function log(msg) {
 
         window.scrollTo(0,document.body.scrollHeight);
     }
+
+    notify(msg.message);
 }
 
 function notify(message) {
