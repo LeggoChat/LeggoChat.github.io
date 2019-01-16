@@ -277,8 +277,12 @@
                     
                 </div>
                 <div class="modal-body">
+                        <p id="reclaim-failed" style="display: none; color: red;">This channel is not eligible for reclaim! The channel must be more than 7 days inactive.</p>
+                        <p id="reclaim-no-password" style="display: none; color: red;">Please make sure your password is not empty for reclaim!</p>
                         <p id="auth-fail-error" style="display: none; color: red;">Access Denied. Password is incorrect!</p>
                         <input class="form-control" type="password" id="authpassword" placeholder="password"/>
+                        <button onclick="reclaim(true);" type="button" class="btn-block btn btn-link">Reopen to Public</button>
+                        <!-- <button onclick="reclaim(false);" type="button" class="btn-block btn btn-link">Reclaim Channel</button> -->
                 </div>
                 <div class="modal-footer">
                     <button type="button" onclick="authenticate();" class="btn btn-danger">Submit</button>

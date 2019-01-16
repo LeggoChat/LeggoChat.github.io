@@ -68,6 +68,12 @@ socket.on("server", function (data) {
     else if(data.for == "auth_failure"){
         document.getElementById('authpassword').value = "";
         $('#auth-fail-error').show();
+    }else if(data.for == "reclaim"){
+        if(data.message == true){
+            window.location.reload();
+        }else{
+            $('#reclaim-failed').show();
+        }
     }
 });
 
@@ -262,7 +268,19 @@ function notify(message) {
   
     // Finally, if the user has denied notifications and you 
     // want to be respectful there is no need to bother them any more.
-  }
+}
+
+function reclaim(mode){
+    if(mode){
+        // to public
+        socket.emit('server', { mode: "reclaim_public", channel: currentChn });
+    }else{
+        if($('#authpassword').val() == "")
+            $('#reclaim-no-password').show();
+
+        socket.emit('server', { mode: "reclaim_private", channel: currentChn, password: $('#authpassword').val() });
+    }
+}
 
 var input = document.getElementById("message");
 
