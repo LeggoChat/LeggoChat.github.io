@@ -253,6 +253,8 @@ function notify(message) {
         }
       });
     }
+
+    setTimeout(notification.close.bind(notification), 4000);
   
     // Finally, if the user has denied notifications and you 
     // want to be respectful there is no need to bother them any more.
