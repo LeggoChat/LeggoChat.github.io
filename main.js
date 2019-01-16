@@ -157,6 +157,7 @@ function loadMessages(){
 }
 
 function log(msg) {
+    var notify = false;
     if(typeof(msg) == "undefined" || msg == null || typeof(msg.message) == "undefined"){
         return false;
     }
@@ -196,6 +197,7 @@ function log(msg) {
                 </div></div>
             `;
         }else{
+            notify = true;
             if(msg.persist == 1 || msg.persist == true || msg.persist == "true"){
                 persistStr = " - Persisted";
             }
@@ -229,8 +231,9 @@ function log(msg) {
 
         window.scrollTo(0,document.body.scrollHeight);
     }
-
-    notify(msg.message);
+    if(notify){
+        notify(msg.message);
+    }
 }
 
 function notify(message) {
