@@ -11,8 +11,9 @@ if(currentChn.length > 15){
 }
 document.getElementById('title').innerHTML = "#" + currentChnText;
 currentChn = '#'+currentChn;
-$('#connecting').modal('show');
+//$('#connecting').modal('show');
 // log("Joined " + currentChn);
+log({from: "notice", message: "Connecting... Please wait."});
 
 var socket = io.connect('https://leggochat.hexabyn.com');
 socket.on('status', function (data) {
@@ -27,7 +28,6 @@ socket.on('status', function (data) {
     }
     $('#connecting').modal('hide');
     socket.emit('client', { channel: currentChn });
-    socket.emit('messages', { channel: currentChn, page: currentPage });
 });
 
 socket.on(currentChn, function (data) {
@@ -45,6 +45,19 @@ socket.on('messages', function (data) {
     prelog(data);
 });
 
+socket.on("server", function (data) {
+    if(data.for == "claim"){
+        if(data.message == 1)
+            log({from: "notice", message: "Room successfully claimed."});
+        else
+            log({from: "notice", message: "Room claim unsuccessful. Please try again."});
+    }else if(data.for == "allow_messages"){
+        socket.emit('messages', { channel: currentChn, page: currentPage });
+    }else if(data.for == "auth"){
+        $('#auth-modal').modal('show');
+    }
+});
+
 function send() {
     if(document.getElementById('message').value.replace(/\s/g, "") == ''){
         document.getElementById('message').value = "";
@@ -54,6 +67,17 @@ function send() {
     // log("Me: " + document.getElementById('message').value);
     log({from: "Me", message: document.getElementById('message').value});
     document.getElementById('message').value = "";
+}
+
+function authenticate(){
+    socket.emit('client', { channel: currentChn, password: document.getElementById('authpassword').value });
+    document.getElementById('authpassword').value = "";
+    $('#auth-modal').modal('hide');
+}
+
+function claim(){
+    socket.emit('server', { mode: "claim", channel: currentChn, password: document.getElementById('claimpassword').value });
+    $('#claim-modal').modal('hide');
 }
 
 function join() {
@@ -198,4 +222,8 @@ input.addEventListener("keyup", function (event) {
         // Trigger the button element with a click
         document.getElementById("sendBtn").click();
     }
+});
+
+$('.nav-link').on('click',function() {
+    $('#toggle-nav').click();
 });
