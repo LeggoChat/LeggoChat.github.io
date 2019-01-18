@@ -47,7 +47,11 @@
           <div class="brand text-center">
             <img src="assets/img/logo-white.png" />
             <h1>Hi, this is LeggoChat</h1>
-            <h3 class="title text-center"><button onclick="window.location.href='chat';" class="btn btn-danger"><i style="font-size: 2em;" class="material-icons">chat</i> Start Chatting</button></h3>
+            <h3 class="title text-center d-none d-md-block">
+              leggochat.github.io/chat#<span id="sub-heading"></span><span id="type-blinker">|</span><br><br>
+              <button onclick="window.location.href='chat';" class="btn btn-danger"><i style="font-size: 2em;" class="material-icons">chat</i>
+                Start Chatting</button>
+            </h3>
           </div>
         </div>
       </div>
@@ -62,44 +66,96 @@
           <div class="col-12 col-md-6 col-lg-4 text-center">
             <i style="font-size: 2em;" class="material-icons">clear_all</i>
             <h4 class="title">No chat records stored</h4>
-            <p>All the chats are annonymous and no records will be stored unless you choose to persist. Once the participants refresh the pages, it is all gone. None will be logged and no residual storage.</p>
+            <p>All the chats are annonymous and no records will be stored unless you choose to persist. Once the
+              participants refresh the pages, it is all gone. None will be logged and no residual storage.</p>
           </div>
-          
+
           <div class="col-12 col-md-6 col-lg-4 text-center">
             <i style="font-size: 2em;" class="material-icons">group_add</i>
             <h4 class="title">Easily create a group</h4>
-            <p>Create a group by joining or creating a channel, then send the link to your friends to start chatting annonymously. Channels can be password protected and or opened to public if they know the link or channel name.</p>
+            <p>Create a group by joining or creating a channel, then send the link to your friends to start chatting
+              annonymously. Channels can be password protected and or opened to public if they know the link or channel
+              name.</p>
           </div>
-          
+
           <div class="col-12 col-md-6 col-lg-4 text-center">
             <i style="font-size: 2em;" class="material-icons">visibility_off</i>
             <h4 class="title">No names</h4>
-            <p>No names, just encrypted strings to identify different entities. It is that annonymous. Make your channel as unique as possible to ensure that you are indeed chatting with invited parties.</p>
+            <p>No names, just encrypted strings to identify different entities. It is that annonymous. Make your
+              channel as unique as possible to ensure that you are indeed chatting with invited parties.</p>
           </div>
         </div>
       </div>
     </div>
   </div>
   <footer class="footer footer-default">
-        <div class="container">
-            <nav class="float-left">
-                <ul>
-                    <li>
-                        <a target="_blank" href="https://hexabyn.com/">
-                            Server Sponsored by Hexabyn Technologies
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-            <div class="copyright float-right">
-                &copy;
-                <script>
-                    document.write(new Date().getFullYear())
-                </script>
-                <a href="https://leggochat.github.io/" target="blank">LeggoChat</a>, chat freely.
-            </div>
-        </div>
-    </footer>
+    <div class="container">
+      <nav class="float-left">
+        <ul>
+          <li>
+            <a target="_blank" href="https://hexabyn.com/">
+              Server Sponsored by Hexabyn Technologies
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <div class="copyright float-right">
+        &copy;
+        <script>
+          document.write(new Date().getFullYear())
+        </script>
+        <a href="https://leggochat.github.io/" target="blank">LeggoChat</a>, chat freely.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+      var i = 0;
+      // var txt = 'Lorem ipsum dummy text blabla.';
+      var subHeadingIndex = 0;
+      var subHeadings =[
+          'general',
+          'ACMEsecret_santa',
+          'ThisGroupForAll',
+          'gibberish_123151312%$@#',
+      ];
+      var txt = subHeadings[0];
+      var speed = 100;
+      var clearTimeout = 2000;
+      
+      typeWriter();
+      var blinker = document.getElementById('type-blinker');
+      var status = 'visible'
+      setInterval(function(){
+          if(status == 'visible'){
+              status = 'hidden'
+          }else{
+              status = 'visible'
+          }
+          blinker.style.visibility = status;
+      }, 500)
+      function typeWriter() {
+          console.log(txt)
+          if (i < txt.length) {
+              document.getElementById("sub-heading").innerHTML += txt.charAt(i);
+              i++;
+              setTimeout(typeWriter, speed);
+          }else{
+              setTimeout(clearWriter, clearTimeout);
+          }
+      }
+
+      function clearWriter(){
+          document.getElementById('sub-heading').innerHTML = '';
+          i = 0;
+          subHeadingIndex++;
+          if((subHeadingIndex) == subHeadings.length){
+              subHeadingIndex = 0;
+          }
+          txt = subHeadings[subHeadingIndex];
+          typeWriter();
+      }
+  </script>
 </body>
 
 </html>
