@@ -13,7 +13,7 @@
     <!-- Material Kit CSS -->
     <link href="assets/css/material-kit.css?v=2.0.5" rel="stylesheet" />
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" sizes="192x192" href="assets/img/app-icon-192.png">
 
     <style>
@@ -86,6 +86,10 @@
             transform: translateY(-50%);
             color: black;
         }
+        
+        td{
+            padding: 10px;
+        }
     </style>
 </head>
 
@@ -94,9 +98,10 @@
         <div class="container text-center">
             <!-- <a class="navbar-brand" href="#">LeggoChat</a> -->
             <span class="navbar-brand"><img class="logo mr-auto" src="assets/img/logo-white.png" /></span>
-            <div class="info"><span id="title"></span>&nbsp;<span class="d-md-none">(</span><span id="count">0</span><span class="d-md-none">)</span>&nbsp;<span class="d-none d-md-inline">Participants</span></div>
-            <button id="toggle-nav" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
-                aria-expanded="false" aria-label="Toggle navigation">
+            <div class="info"><span id="title"></span>&nbsp;<span class="d-md-none">(</span><span id="count">0</span><span
+                    class="d-md-none">)</span>&nbsp;<span class="d-none d-md-inline">Participants</span></div>
+            <button id="toggle-nav" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="navbar-toggler-icon"></span>
                 <span class="navbar-toggler-icon"></span>
@@ -105,9 +110,12 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <button id="claim-chn-btn" type="button" data-toggle="modal" data-target="#claim-modal" class="d-inline nav-link btn btn-link" ><i class="material-icons">lock</i> Claim Channel</button>
-                        <button id="change-pwd-btn" type="button" data-toggle="modal" data-target="#change-pwd-modal" class="d-none nav-link btn btn-link" ><i class="material-icons">lock</i> Change Password</button>
-                        <button type="button" class="d-inline btn btn-link nav-link" data-toggle="modal" data-target="#exampleModal"><i class="material-icons">swap_calls</i> Change Channel</button>
+                        <button id="claim-chn-btn" type="button" data-toggle="modal" data-target="#claim-modal" class="d-inline nav-link btn btn-link"><i
+                                class="material-icons">lock</i> Claim Channel</button>
+                        <button id="change-pwd-btn" type="button" data-toggle="modal" data-target="#change-pwd-modal"
+                            class="d-none nav-link btn btn-link"><i class="material-icons">lock</i> Change Password</button>
+                        <button type="button" class="d-inline btn btn-link nav-link" data-toggle="modal" data-target="#exampleModal"><i
+                                class="material-icons">swap_calls</i> Change Channel</button>
                     </li>
                 </ul>
             </div>
@@ -115,54 +123,55 @@
     </nav>
 
 
-        <div class="container">
-            <div class="section text-center">
-                
-                <input class="form-control" type="hidden" id="channel" />
-                <!-- <button onclick="join();">Join</button> -->
-                <br>
-                <div id="log" class="text-left"></div>
-                
-                <div class="send">
-                    <div class="container">
-                        <div class="row text-center">
-                            <div class="col-12 col-md-10">
-                                <div class="container send-msg-bg">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <div class="form-check">
-                                                <label class="form-check-label">Persist &nbsp;
-                                                    <input id="persist" class="form-check-input" type="checkbox" value="">
-                                                    
-                                                    <span class="form-check-sign">
-                                                        <span class="check"></span>
-                                                    </span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <input class="form-control" type="textarea" id="message" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-2">
-                                <button class="btn btn-danger btn-block" id="sendBtn" onclick="send();">Send</button>
-                            </div>
+    <div class="container">
+        <div class="section text-center">
 
-                            <div class="container">
-                                <div class="copyright text-center">
-                                    &copy;
-                                    <script>
-                                        document.write(new Date().getFullYear())
-                                    </script>
-                                    <a href="https://leggochat.github.io/" target="blank">LeggoChat</a>, chat freely.
-                                    <span class="d-block">Server Sponsored by <a target="_blank" href="https://hexabyn.com/">Hexabyn Technologies</a></span>
+            <input class="form-control" type="hidden" id="channel" />
+            <!-- <button onclick="join();">Join</button> -->
+            <br>
+            <div id="log" class="text-left"></div>
+
+            <div class="send">
+                <div class="container">
+                    <div class="row text-center">
+                        <div class="col-12 col-md-10">
+                            <div class="container send-msg-bg">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="form-check">
+                                            <label class="form-check-label">Persist &nbsp;
+                                                <input id="persist" class="form-check-input" type="checkbox" value="">
+
+                                                <span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <input class="form-control" type="textarea" id="message" />
                                 </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-2">
+                            <button class="btn btn-danger btn-block" id="sendBtn" onclick="send();">Send</button>
+                        </div>
+
+                        <div class="container">
+                            <div class="copyright text-center">
+                                &copy;
+                                <script>
+                                    document.write(new Date().getFullYear())
+                                </script>
+                                <a href="https://leggochat.github.io/" target="blank">LeggoChat</a>, chat freely.
+                                <span class="d-block">Server Sponsored by <a target="_blank" href="https://hexabyn.com/">Hexabyn
+                                        Technologies</a></span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
     <!-- <footer class="footer footer-default">
         <div class="container">
@@ -193,10 +202,10 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Change Channel</h5>
-                    
+
                 </div>
                 <div class="modal-body">
-                        <input class="form-control" type="text" id="chgchannel" placeholder="channel"/>
+                    <input class="form-control" type="text" id="chgchannel" placeholder="channel" />
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -208,19 +217,18 @@
     </div>
 
     <!-- Loading Modal -->
-    <div class="modal fade" id="connecting" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="connecting" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Please Wait</h5>
-                    
+
                 </div>
                 <div class="modal-body">
-                        <p>Connecting...</p>
+                    <p>Connecting...</p>
                 </div>
                 <div class="modal-footer">
-                   
+
                 </div>
             </div>
         </div>
@@ -233,10 +241,10 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Claim Channel</h5>
-                    
+
                 </div>
                 <div class="modal-body">
-                        <input class="form-control" type="password" id="claimpassword" placeholder="password"/>
+                    <input class="form-control" type="password" id="claimpassword" placeholder="password" />
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -254,11 +262,11 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Change Channel Password</h5>
-                    
+
                 </div>
                 <div class="modal-body">
-                        <input class="form-control" type="password" id="change-old-password" placeholder="old password"/>
-                        <input class="form-control" type="password" id="change-new-password" placeholder="new password"/>
+                    <input class="form-control" type="password" id="change-old-password" placeholder="old password" />
+                    <input class="form-control" type="password" id="change-new-password" placeholder="new password" />
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -270,21 +278,23 @@
     </div>
 
     <!-- Prompt Auth Modal -->
-    <div class="modal fade" data-backdrop="static" data-keyboard="false" id="auth-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" data-backdrop="static" data-keyboard="false" id="auth-modal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Please Enter Password to Access Channel</h5>
-                    
+
                 </div>
                 <div class="modal-body">
-                        <p id="reclaim-failed" style="display: none; color: red;">This channel is not eligible for reclaim! The channel must be more than 7 days inactive.</p>
-                        <p id="reclaim-no-password" style="display: none; color: red;">Please make sure your password is not empty for reclaim!</p>
-                        <p id="auth-fail-error" style="display: none; color: red;">Access Denied. Password is incorrect!</p>
-                        <input class="form-control" type="password" id="authpassword" placeholder="password"/>
-                        <button onclick="reclaim(true);" type="button" class="btn-block btn btn-link">Reopen to Public</button>
-                        <!-- <button onclick="reclaim(false);" type="button" class="btn-block btn btn-link">Reclaim Channel</button> -->
+                    <p id="reclaim-failed" style="display: none; color: red;">This channel is not eligible for reclaim!
+                        The channel must be more than 7 days inactive.</p>
+                    <p id="reclaim-no-password" style="display: none; color: red;">Please make sure your password is
+                        not empty for reclaim!</p>
+                    <p id="auth-fail-error" style="display: none; color: red;">Access Denied. Password is incorrect!</p>
+                    <input class="form-control" type="password" id="authpassword" placeholder="password" />
+                    <button onclick="reclaim(true);" type="button" class="btn-block btn btn-link">Reopen to Public</button>
+                    <!-- <button onclick="reclaim(false);" type="button" class="btn-block btn btn-link">Reclaim Channel</button> -->
                 </div>
                 <div class="modal-footer">
                     <button type="button" onclick="authenticate();" class="btn btn-danger">Submit</button>
@@ -293,39 +303,62 @@
         </div>
     </div>
 
-    <div class="modal fade" id="chgingChn" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="chgingChn" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Please Wait</h5>
-                    
+
                 </div>
                 <div class="modal-body">
-                        <p>Changing Channel...</p>
+                    <p>Changing Channel...</p>
                 </div>
                 <div class="modal-footer">
-                   
+
                 </div>
             </div>
         </div>
     </div>
 
+    <div id="pwa-prompt" class="row fixed-bottom py-3  " style="display: none; background-color: white; z-index: 99999999999;">
+        <div class="container text-center">
+            <table style="width: 100%;">
+                <tr>
+                    <td>
+                        <img class="img-fluid" src="assets/img/app-icon-192.png" style="max-height: 100px;" />
+                    </td>
+                    <td>
+                        Install LeggoChat Application to Home screen
+                        <br>
+                        <button id="pwa-add" class="btn ml-auto btn-danger">
+                            Install
+                        </button>
+                        <button onclick="$('#pwa-prompt').hide();" class="btn ml-auto btn-dark">
+                            Close
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
     <script src="https://leggochat.hexabyn.com/socket.io/socket.io.js"></script>
     <!--   Core JS Files   -->
-  <script src="./assets/js/core/jquery.min.js" type="text/javascript"></script>
-  <script src="./assets/js/core/popper.min.js" type="text/javascript"></script>
-  <script src="./assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
-  <script src="./assets/js/plugins/moment.min.js"></script>
-  <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
-  <script src="./assets/js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script>
-  <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-  <script src="./assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
-  <!--  Google Maps Plugin    -->
-  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script> -->
-  <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
-  <script src="./assets/js/material-kit.js?v=2.0.5" type="text/javascript"></script>
+    <script src="./assets/js/core/jquery.min.js" type="text/javascript"></script>
+    <script src="./assets/js/core/popper.min.js" type="text/javascript"></script>
+    <script src="./assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
+    <script src="./assets/js/plugins/moment.min.js"></script>
+    <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
+    <script src="./assets/js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script>
+    <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+    <script src="./assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
+    <!--  Google Maps Plugin    -->
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script> -->
+    <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
+    <script src="./assets/js/material-kit.js?v=2.0.5" type="text/javascript"></script>
     <script src="main.js"></script>
+    <script src="assets/js/pwa.js"></script>
 </body>
 
 </html>

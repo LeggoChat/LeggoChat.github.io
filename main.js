@@ -1,4 +1,7 @@
 Notification.requestPermission();
+var global = {
+    appInstalled: false,
+}
 var currentChn = 'general';
 if(typeof(localStorage.getItem('last_channel')) !== "undefined" && localStorage.getItem('last_channel') !== null){
     currentChn = localStorage.getItem('last_channel');
