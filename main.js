@@ -1,9 +1,15 @@
 Notification.requestPermission();
 var currentChn = 'general';
+if(typeof(localStorage.getItem('last_channel')) !== "undefined" && localStorage.getItem('last_channel') !== null){
+    currentChn = localStorage.getItem('last_channel');
+    window.location.href = "#" + currentChn;
+}
+
 var currentPage = 0;
 var linkChn = window.location.hash.substr(1);
 if (linkChn !== '') {
     currentChn = linkChn;
+    localStorage.setItem('last_channel', currentChn);
 }
 // document.getElementById('channel').value = currentChn;
 var currentChnText = currentChn;
@@ -109,6 +115,7 @@ function join() {
     window.location.href = "/chat#" + document.getElementById('chgchannel').value;
     $('#exampleModal').modal('hide');
     $('#chgingChn').modal('show');
+    localStorage.setItem('last_channel', document.getElementById('chgchannel').value);
     setTimeout(function(){
         location.reload();
     },1500)

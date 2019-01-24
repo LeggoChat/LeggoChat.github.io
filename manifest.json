@@ -1,0 +1,21 @@
+{
+    "short_name": "LeggoChat",
+    "name": "LeggoChat",
+    "icons": [
+      {
+        "src": "/assets/img/app-icon-192.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "/assets/img/app-icon-512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "start_url": "/chat/",
+    "background_color": "#000000",
+    "display": "standalone",
+    "scope": "/chat/",
+    "theme_color": "#000000"
+  }
