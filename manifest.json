@@ -13,9 +13,9 @@
         "sizes": "512x512"
       }
     ],
-    "start_url": "/chat/",
+    "start_url": "/chat",
     "background_color": "#000000",
     "display": "standalone",
-    "scope": "/chat/",
+    "scope": "./",
     "theme_color": "#000000"
   }
