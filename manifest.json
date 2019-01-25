@@ -13,7 +13,7 @@
         "sizes": "512x512"
       }
     ],
-    "start_url": ".",
+    "start_url": "chat.html",
     "background_color": "#000000",
     "display": "standalone",
     "scope": "./",
